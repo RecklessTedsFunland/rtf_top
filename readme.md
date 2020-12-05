@@ -1,6 +1,8 @@
+![](https://spectrum.ieee.org/image/Mjg5MjEzMg.jpeg)
+
 # Top
 
-Reports performance of system.
+Like the powerful [F-ray][1], this reports performance of system.
 
 - Message
     - CPU: [core0, core1, ...]
@@ -30,3 +32,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+[1]: https://futurama.fandom.com/wiki/F-Ray
