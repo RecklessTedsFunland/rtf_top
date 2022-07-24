@@ -10,7 +10,44 @@ Like the powerful [F-ray][1], this reports performance of system.
     - Disk space: (used, max)
     - Hostname: string
     - IPv4: string
-    
+
+```bash
+>>> ros2 topic list
+/cpu_memory
+/disk
+/parameter_events
+/rosout
+```
+
+```bash
+>>> ros2 node list
+/ros_psutil
+```
+
+```bash
+>>> ros2 node info /ros_psutil
+/ros_psutil
+  Subscribers:
+
+  Publishers:
+    /cpu_memory: rtf_interfaces/msg/CpuMemory
+    /disk: rtf_interfaces/msg/Disk
+    /parameter_events: rcl_interfaces/msg/ParameterEvent
+    /rosout: rcl_interfaces/msg/Log
+  Service Servers:
+    /ros_psutil/describe_parameters: rcl_interfaces/srv/DescribeParameters
+    /ros_psutil/get_parameter_types: rcl_interfaces/srv/GetParameterTypes
+    /ros_psutil/get_parameters: rcl_interfaces/srv/GetParameters
+    /ros_psutil/list_parameters: rcl_interfaces/srv/ListParameters
+    /ros_psutil/set_parameters: rcl_interfaces/srv/SetParameters
+    /ros_psutil/set_parameters_atomically: rcl_interfaces/srv/SetParametersAtomically
+  Service Clients:
+
+  Action Servers:
+
+  Action Clients:
+```
+
 # MIT License
 
 **Copyright (c) 2020 Reckless Ted's Funland**
