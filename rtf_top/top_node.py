@@ -1,5 +1,7 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.parameter import Parameter
+from rcl_interfaces.msg import SetParametersResult
 # from rclpy.clock import Clock # Clock().now().to_msg()
 from std_msgs.msg import String
 from colorama import Fore
@@ -16,23 +18,42 @@ class rtf_Top(Node):
         super().__init__('ros_psutil')
         self.cpu_mem_publisher = self.create_publisher(CpuMemory, 'cpu_memory', 10)
         self.disk_publisher = self.create_publisher(Disk, 'disk', 10)
-        self.timer_period = cmtime  # seconds
+
+        self.declare_parameter('cmtime', 0.5) # seconds
+        self.cmtime = self.get_parameter('cmtime').value
         self.cmtimer = self.create_timer(cmtime, self.cpu_mem_callback)
+
+        self.declare_parameter('dtime', 5.0) # seconds
+        self.dtime = self.get_parameter('dtime').value
         self.dtimer = self.create_timer(dtime, self.disk_callback)
-        self.path = path
+
+        self.declare_parameter('path', '/') # seconds
+        self.path = self.get_parameter('path').value
+
+        self.set_parameters_callback(self.parameter_callback)
 
     def __del__(self):
         """
         """
         print(f"{Fore.GREEN}pub delete{Fore.RESET}")
 
+    def parameter_callback(self, params):
+        for param in params:
+            if param.name == 'cmtime' and param.type_ == Parameter.Type.DOUBLE:
+                self.cmtime = param.value
+            elif param.name == 'dtime' and param.type_ == Parameter.Type.DOUBLE:
+                self.dtime = param.value
+            elif param.name == 'path' and param.type_ == Parameter.Type.STRING:
+                self.path = param.value
+        return SetParametersResult(successful=True)
+
     def cpu_mem_callback(self):
         """
         """
-        c = psutil.cpu_percent(interval=self.timer_period*0.75, percpu=True)
+        c = psutil.cpu_percent(interval=self.cmtime*0.75, percpu=True)
         cpumem = CpuMemory()
         cpumem.header.stamp = self.get_clock().now().to_msg()
-        cpumem.header.frame_id = "kevin"
+        cpumem.header.frame_id = "psutil"
         cpumem.cpu = c
         # self.get_logger().info(f">> CPU: {info}")
 
