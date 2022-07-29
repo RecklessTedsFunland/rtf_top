@@ -48,6 +48,38 @@ Like the powerful [F-ray][1], this reports performance of system.
   Action Clients:
 ```
 
+```bash
+>>> ros2 topic echo /cpu_memory
+header:
+  stamp:
+    sec: 1659113794
+    nanosec: 751915772
+  frame_id: psutil
+cpu:
+- 30.0
+- 0.0
+- 0.0
+- 90.0
+memory:
+  total: 1934405632
+  available: 1456324608
+  used: 281284608
+  free: 739332096
+  active: 483934208
+  inactive: 0
+  buffers: 83759104
+  cached: 830029824
+  shared: 7352320
+```
+
+```bash
+>>> ros2 topic echo /disk                       
+path: /
+total: 15391461376
+used: 3636686848
+free: 11077103616
+```
+
 # MIT License
 
 **Copyright (c) 2020 Reckless Ted's Funland**

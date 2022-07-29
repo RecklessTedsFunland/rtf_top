@@ -1,0 +1,7 @@
+/ros_psutil:
+  ros__parameters:
+    cmtime: 0.5
+    dtime: 5.0
+    path: /
+    use_sim_time: false
+
