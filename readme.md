@@ -80,6 +80,12 @@ used: 3636686848
 free: 11077103616
 ```
 
+# Todo
+
+- [ ] temperature info
+- [ ] network info
+- [ ] power/battery info?
+
 # MIT License
 
 **Copyright (c) 2020 Reckless Ted's Funland**
