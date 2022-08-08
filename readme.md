@@ -85,6 +85,7 @@ free: 11077103616
 - [ ] temperature info
 - [ ] network info
 - [ ] power/battery info?
+- [ ] convert to C using [cpslib](https://github.com/hamon-in/cpslib)?
 
 # MIT License
 
